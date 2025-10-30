@@ -18,7 +18,7 @@ sudo tee "${KIOSK_USER_DIR}"/.xinitrc << EOF
 #!/bin/bash
 
 # Disable screen blanking and power management
-xset s off
+xset s 0 0 
 xset s noblank
 xset -dpms
 
@@ -49,7 +49,7 @@ sudo tee /etc/lightdm/lightdm.conf << EOF
 autologin-user=${KIOSK_USER}
 autologin-user-timeout=0
 user-session=kiosk
-xserver-command=X -nocursor
+xserver-command=X -nocursor -s 0 -p 0 -dpms
 EOF
 
 # 5. Create Openbox autostart
